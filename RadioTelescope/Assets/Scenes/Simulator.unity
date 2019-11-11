@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40096329}
   m_LocalRotation: {x: 0.058777843, y: -0, z: -0, w: 0.99827117}
-  m_LocalPosition: {x: -39.36, y: 7.5, z: -52.83}
+  m_LocalPosition: {x: -38.68, y: 4.7, z: -46.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &64137122
 Transform:
   m_ObjectHideFlags: 0
@@ -936,7 +936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17613ca6734f41e44b8fb5008a624851, type: 2}
+  - {fileID: 2100000, guid: 65e547323c4d79249ada725d3ea5939b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -973,8 +973,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745105752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 0, z: -35.1}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -38.294, y: 0, z: -35.1}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1250,9 +1250,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor-1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 59d11a29ed531044fbe8f24d3fc183d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 59d11a29ed531044fbe8f24d3fc183d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.41893
+      value: -38.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 59d11a29ed531044fbe8f24d3fc183d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2653,13 +2657,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120281185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e730966bf5ebd784bae5e15867dc3026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   port: 8081
   ip: 127.0.0.1
+  PLC_ip: 127.0.0.1
+  PLC_port: 8080
+  MCU_ip: 127.0.0.1
 --- !u!4 &2120281189
 Transform:
   m_ObjectHideFlags: 0
