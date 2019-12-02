@@ -9,6 +9,7 @@ using Valve.Newtonsoft.Json;
 using Modbus.Data;
 using Modbus.Device;
 using System.Linq;
+using UnityEngine.UI;
 
 public class SimServer : MonoBehaviour {  	
 	#region private members 	
@@ -33,6 +34,8 @@ public class SimServer : MonoBehaviour {
     private TcpListener MCU_TCPListener;
     private ModbusSlave MCU_Modbusserver;
     public String ip;
+
+    public Text text;
 	// Use this for initialization
 	//void Start () { 		
 		// Start TcpServer background thread 		
@@ -40,7 +43,7 @@ public class SimServer : MonoBehaviour {
 	//	tcpListenerThread.IsBackground = true; 		
 	//	tcpListenerThread.Start(); 	
 	//}
-
+    private string textString = "";
 	void ExitServer()
 	{
 		tcpListener.Server.Close();
@@ -50,7 +53,7 @@ public class SimServer : MonoBehaviour {
 		//if (Input.GetKeyDown(KeyCode.Space)) {             
 		//	SendMessage();         
 		//}
-
+        text.text = textString;
 		if (Input.GetKeyDown((KeyCode.Escape)))
 		{
 			ExitServer();
@@ -255,12 +258,47 @@ public class SimServer : MonoBehaviour {
 
     private bool handleCMD(ushort[] data)
     {
-        string outstr = " inreg";
+        string outstr = "";
         for (int v = 0; v < data.Length; v++)
         {
             outstr += Convert.ToString(data[v], 16).PadLeft(5) + ",";
         }
         Debug.Log(outstr);
+        string[] packetInfo = outstr.Split(',');
+        Debug.Log(packetInfo[0]);
+        if (Int32.Parse(packetInfo[0]) == 2)
+        {
+            
+            Debug.Log(packetInfo[2]);
+            Debug.Log(packetInfo[3]);
+            int frontRe = (Convert.ToInt16(packetInfo[2].Trim(), 16))  << 16;
+            int backRe = (Convert.ToInt16(packetInfo[3].Trim(), 16));
+
+           
+
+            
+            
+            Debug.Log(packetInfo[12]);
+            Debug.Log(packetInfo[13]);
+            int frontRe2 = Convert.ToInt16(packetInfo[12].Trim(), 16) << 16;
+            int backRe2 = Convert.ToInt16(packetInfo[13].Trim(), 16);
+            int az = frontRe + backRe;
+            int el = frontRe2 + backRe2;
+            
+            float azDeg = az * 360.0f / (20000.0f * 500.0f);
+            Debug.Log("The degree azimuth is: " + azDeg); 
+            float elDeg = el * 360.0f / (20000.0f * 50.0f);
+            Debug.Log("The degree elevation is: " + elDeg);
+            
+            
+            textString = "Move Packet\n" + "Pos Az: " + az + "\nPos El: " + el;
+            
+            //speed
+            Debug.Log(packetInfo[4]);
+            Debug.Log(packetInfo[5]);
+            Debug.Log(packetInfo[14]);
+            Debug.Log(packetInfo[15]);
+        }
         Debug.Log("===========================================================================================================================");
         jogging = false;
         if (data[0] == 0x8400)

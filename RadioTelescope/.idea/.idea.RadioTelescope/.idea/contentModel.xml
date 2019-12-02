@@ -8,6 +8,24 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Asset Store" t="Include">
+          <e p="AllSkyFree" t="Include">
+            <e p="AllSkyFree_Menu.cs" t="Include" />
+            <e p="AllSkyFree_Readme.txt" t="Include" />
+          </e>
+          <e p="Birch Trees Package" t="Include">
+            <e p="Birches Version 2.0 [Tree Creator]" t="Include">
+              <e p="Birch Trees Assets" t="Include">
+                <e p="readme_Trees.txt" t="Include" />
+              </e>
+            </e>
+            <e p="Birches Version 3.0" t="Include">
+              <e p="Demos" t="Include">
+                <e p="Additional Content" t="Include">
+                  <e p="ExtendedFlycamBirchTrees.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
           <e p="NatureStarterKit2" t="Include">
             <e p="Editor" t="Include">
               <e p="ImageEffects" t="Include">
